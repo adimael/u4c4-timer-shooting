@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "author": "Adimael DevOps",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-pi-pico-w", "id": "pico", "top": 6.35, "left": 214.75, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 35,
+      "left": 134.4,
+      "attrs": { "color": "black" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 195.95,
+      "left": 86.4,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 224.75,
+      "left": 86.4,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 253.55,
+      "left": 86.4,
+      "attrs": { "value": "330" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 44.4, "left": 23, "attrs": { "color": "blue" } },
+    { "type": "wokwi-led", "id": "led2", "top": 130.8, "left": 23, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led3", "top": 92.4, "left": 23, "attrs": { "color": "green" } }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "pico:GP5", "btn1:2.r", "green", [ "h0" ] ],
+    [ "btn1:1.r", "pico:GND.1", "black", [ "v0" ] ],
+    [ "pico:GND.4", "r3:2", "black", [ "h-48", "v57.64" ] ],
+    [ "pico:GND.4", "r2:2", "black", [ "h-48", "v28.84" ] ],
+    [ "pico:GND.4", "r1:2", "black", [ "h-48", "v0.04" ] ],
+    [ "pico:GP13", "led2:A", "red", [ "h-19.2", "v0.04", "h-163.2" ] ],
+    [ "pico:GP12", "led1:A", "blue", [ "h-9.6", "v0.04", "h-134.4", "v-76.8" ] ],
+    [ "pico:GP11", "led3:A", "green", [ "h-115.2", "h0", "v9.6" ] ],
+    [ "led3:C", "led1:C", "black", [ "v0", "h-9.2", "v-38.4", "h-28.8", "v38.4" ] ],
+    [ "led1:C", "led2:C", "black", [ "h-9.2", "v-9.6", "h-38.4", "v96" ] ],
+    [ "led2:C", "r1:1", "black", [ "h-47.6", "v28.8" ] ],
+    [ "r1:1", "r2:1", "black", [ "v0", "h-96", "v28.8" ] ],
+    [ "r2:1", "r3:1", "black", [ "v0", "h-96", "v28.8" ] ]
+  ],
+  "dependencies": {}
+}
